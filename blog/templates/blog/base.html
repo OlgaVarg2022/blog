@@ -9,7 +9,14 @@
     <body>
         <nav class="navbar is-info">
             <div class="navbar-brand">
-                <a href="/" class="navbar-item"><strong>Code With Stein</strong></a>
+                <a href="/" class="navbar-item"><strong>Code With Olga</strong></a>
+                {% if not request.user.is_authenticated %}
+                <a href="/signup" class="navbar-item"><strong>Sign Up</strong></a>
+                <a href="/login" class="navbar-item"><strong>Sign In</strong></a>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="navbar-item"><strong>Log out</strong></a>
+                {% endif %}
             </div>
         </nav>
 
